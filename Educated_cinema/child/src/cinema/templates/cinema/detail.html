@@ -1,10 +1,13 @@
 {% extends 'cinema/base.html' %} 
 {% block content %}
+{{% for Cinema in Cinemas %}
 <div class="border p-8  mb-5 text-secondsry" style="color:black">
      <img class="img-fluid rounded-circle border m-5" sizes=150px height=300px width="170px"
           src="#" alt="صورة الموقع">
-          <h1><a class="text-dark">{{Cinema.name}}</a></h1>
+          <h1><li class="text-dark" href="{% url 'detail' Cinema.pk %}">{{Cinema.name}}</li></h1>
+          <h1>{{Cinema.date}}</h1>
           <li style="color:black">{{Cinema.content}}</li>
           <h2>{{Cinema.cat}}</h2>
-</div>
+     {% endfor %}
+     </div>
 {% endblock content %}

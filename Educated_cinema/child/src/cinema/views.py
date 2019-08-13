@@ -12,8 +12,12 @@ def Cinema_detail(request, Cinema_id):
     post = get_object_or_404(Cinema, pk=Cinema_id)
     context = {
         'title': post,
-        'post': post
+        'post': post,
     }
     return render(request, 'cinema/detail.html', context)
+
+def product_list(request):
+    f = ProductFilter(request.GET, queryset= Category.objects.all())
+    return render(request, 'cinema/last.html', {'filter': f})
 
 

@@ -1,0 +1,19 @@
+@font-face {
+    font-family: 'Amiri';
+    src: url('../fonts/Amiri.Regular.ttf')  format("truetype"),
+         local('Amiri');
+}
+html, body{
+    direction: rtl;
+    text-align:right;
+}
+body{
+    font-family: 'Amiri', sans-serif;
+    background-color:darkblue;
+}
+
+
+/* start Post content */
+.cinema{
+       border:5px crimson;
+}

@@ -1,0 +1,11 @@
+<ul class="list-group-flush last-Cinema">
+    {% for Cinema in Cinemas %}
+    <li class="list-grup-item last-Cinema-item">
+        <a class="text-dark" href="{% url 'detail' Cinema.pk %}">{{Cinema.name}}</a>
+
+        </li>
+
+        
+  
+    {% endfor %}
+</ul>

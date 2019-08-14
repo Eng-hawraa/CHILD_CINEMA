@@ -15,8 +15,6 @@
      </head>
      <body>
            <section>
-
-           
              <!--start Navbar-->
              <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <a class="navbar-brand" href="#">
@@ -30,44 +28,51 @@
                     <li class="nav-item active">    
                         <a class="nav-link" href= "{% url 'home' %}">الرئيسية<span class="sr-only">(current)</span></a>
                     </li>
-                  </ul>
+                  </ul> 
+                  
                     <ul class="navbar-nav mr-auto">
+                    {% if user.is_authenticated %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">تسجيل خروج</a></li>
+                    {% else %}
+                   
                        <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">تسجيل</a></li>
                        <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">تسجيل دخول</a></li>
-                       <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">تسجيل خروج</a></li>
+                        {% endif %}
                     </ul>
               </nav>
              <!--End Navbar-->
-<head>
+  <!--Section: Jumbotron-->
+            <section class="card wow fadeIn container" style="background-image: url(https://www.whoa.in/WhoaPhoto/funny-childran-facebook-cover.jpg);background-size: cover; visibility: visible; animation-name: fadeIn;">
 
-</head>
-<body>
-     <header>
-     </header>
-     <section>
-         <img src="{% static 'cinema/images/background.png' %}" alt="Code for Iraq" sizes=200px height=400px width="400px" align="left">
-             <div class="container">
-                 <div  class="row mt-4">
-                      <div class="col-md-8">
-                            {% block content %}
-      
-      
-                            {% endblock content %}       
-                </div> 
-                <div class="col-md-18">
-                    <div class="card mb-3">
-                    <h3 class="text-center bg-secondary text-light p-2">آخر القصص</h3>
-                    {%  include 'cinema/last.html' %}
+                <!-- Content -->
+                <div class="card-body text-white text-center py-5 px-5 my-5">
+
+                    <h1 class="mb-4">
+                        <strong>سينما الاطفال التعليمية</strong>
+                    </h1>
+                    <p>
+                        <strong>مرحباً بكم في سينما الاطفال التعليمية</strong>
+                    </p>
+                    <p class="mb-4">
+                        <strong>يمكنكم مشاهدة كل ما تحبون من القصص من خلال تطبيقنا الرائع...قراءة ممتعة</strong>
+                    </p>
+                    
                 </div>
-                </div>
+                <!-- Content -->
+            </section>
+            <!--Section: Jumbotron-->
+
+    
+                                  {% block content %}
       
-      </section>
-</body>
+      
+                            {% endblock content %} 
+        </body>
                   
           
       
 
-           </footer>
+           </footer ><center>
           </header>
            <div><h2>تواصل معنا عبر وسائل التواصل الاجتماعي</h2>
            <h2><i class="fab fa-twitter"></i>                  <i class="fab fa-facebook"></i>             <i class="fab fa-telegram"></i>           <i class="fab fa-instagram"></i> </h2>           
@@ -76,6 +81,6 @@
            <script src="{% static 'cinema/js/popper.min.js' %}"></script>
            <script src="{% static 'cinema/js/bootstrap.min.css' %}"></script>
            <script src="{% static 'cinema/js/fontawesome-all.min.js' %}"></script> 
-
-       
+</center>
+       </footer>
 </html>

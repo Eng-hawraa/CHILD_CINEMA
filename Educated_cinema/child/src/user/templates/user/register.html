@@ -1,11 +1,15 @@
 {% extends 'cinema/base.html' %}
 {% block content %}
 {% load crispy_forms_tags %}
-<div class="border p-4 mb-5 mt-4">
-    <legend class="border-bottom pb-3 mb-3 mt-5">التسجيل</legend>
-    <form method="POST">
+<div class=" p-4 mb-5 mt-4 container  " align="center">
+    <legend class=" pb-3 mb-3 mt-5">التسجيل</legend>
+    <form class="form-group" method="POST">
         {% csrf_token %}
-        {{form|crispy}}
+        {% for i in form %}
+        <p align="right">{{i.label}}</p>
+     <p align="right">   {{i}}</p>
+     <br>
+        {% endfor %}
         <input class="btn btn-secondary" type="submit" value="تسجيل">
     </form>
     <div class="border-top mt-4 pt-2">

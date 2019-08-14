@@ -1,13 +1,56 @@
-{% extends 'cinema/base.html' %} 
+{% extends "cinema/base.html" %}
+{% load static %}
 {% block content %}
-<h1>سينما الاطفال</h1>
-     {% for Cinema in Cinemas %}
-<div class="border p-8  mb-5 text-secondsry" style="color:black">
-     <img class="img-fluid rounded-circle border m-5" sizes=150px height=300px width="170px"
-          src="#" alt="صورة الموقع">
-          <h1><li class="text-dark" href="{% url 'detail' Cinema.pk %}">{{Cinema.name}}</li></h1>
-          <h1>{{Cinema.date}}</h1>
-          <h2>{{Cinema.cat}}</h2>
-     {% endfor %}
-     </div>
-{% endblock content %}
+<nav class="navbar navbar-light" >
+  <form class="form-inline" method="POST">
+{% csrf_token %}
+    <input class="form-control mr-sm-2" type="search" placeholder="ابحث غن قصة" aria-label="Search" name="search_box">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">بحث</button>
+  </form>
+</nav>
+<div class="container">
+
+          
+            <hr class="my-5">
+
+            <!--Section: Cards-->
+            <section class="text-center">
+
+                <!--Grid row-->
+                <div class="row mb-4 wow fadeIn" style="visibility: visible; animation-name: fadeIn;">
+{% for Cinema in Cinema  %}
+                    <!--Grid column-->
+                    <div class="col-lg-4 col-md-12 mb-4">
+
+                        <!--Card-->
+                        <div class="card">
+
+                            <!--Card image-->
+                            <div class="view overlay">
+                                <div class="embed-responsive embed-responsive-16by9 rounded-top">
+                                    <img class="embed-responsive-item" src="{{Cinema.pic.url}}" allowfullscreen="">
+                                </div>
+                            </div>
+
+                            <!--Card content-->
+                            <div class="card-body">
+                                <!--Title-->
+                                <h4 class="card-title">{{Cinema.name}}</h4>
+                                <!--Text-->
+                              <a href="story/{{Cinema.pk}}">
+                                <p class="card-text">
+                                    <strong>شاهد القصة من هنا</strong>
+                                </p></a>
+                            </div>
+
+                        </div>
+                        <!--/.Card-->
+
+                    </div>
+                    <!--Grid column-->
+                        {% endfor %}
+            </section>
+            <!--Section: Cards-->
+
+        </div> 
+    {% endblock %}

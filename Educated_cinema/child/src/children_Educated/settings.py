@@ -56,7 +56,7 @@ ROOT_URLCONF = 'children_Educated.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, "templates"),],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -119,12 +119,16 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
-STATIC_URL = '/static/'
 # if you want to make static folder for all  can this code .
-#STATICFILES_DIRS =[
-#     os.path.join(BASE_DIR, "static"),
-#     'F:\django\Educated_cinema\child\src\cinema\static'
-# ]
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
 
 CRISPY_TEMPLETE_PACK = 'bootstrap4.3.1'
 # LOGIN_REDIRECT_URL = 'home'
+STATIC_URL = '/static/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+LOGIN_REDIRECT_URL = 'home'
